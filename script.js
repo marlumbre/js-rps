@@ -34,7 +34,7 @@ function getHumanChoice() {
 
 function getComputerChoice() {
     randomChoice = Math.random(); // generates random number for computer choice
-    console.log(randomChoice);
+    // console.log(randomChoice);
     if (randomChoice <= 0.33) {
         return "rock"; 
     } 
@@ -47,11 +47,45 @@ function getComputerChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-    // round logic
+
+    const playerWin = "The player wins.";
+    const compWin = "The computer wins.";
+
+    // Output plays
     console.log("The player played " + humanChoice + "!");
     console.log("The computer played " + computerChoice + "!");
+    
+    // Check for winner or draw
+    switch (humanChoice, computerChoice) {
+        case (humanChoice === "rock" && computerChoice === "scissors") :
+            humanScore += 1;
+            console.log(playerWin);
+        case (humanChoice === "rock" && computerChoice === "paper") :
+            computerScore += 1;
+            console.log(compWin);
+        case (humanChoice === "paper" && computerChoice ==="rock") :
+            humanScore += 1;
+            console.log(playerWin);
+        case (humanChoice === "paper" && computerChoice === "scissors") :
+            computerScore += 1;
+            console.log(compWin);
+        case (humanChoice === "scissors" && computerChoice === "paper") :
+            humanScore += 1;
+            console.log(playerWin);
+        case (humanChoice === "scissors" && computerChoice === "rock") :
+            computerScore += 1;
+            console.log(compWin);
+        default :
+            console.log("It's a draw!");
+    }
+
+    // Output scores
+    console.log("The player's score is: " + humanScore);
+    console.log("The computer's score is: " + computerScore);
 }
 
+let humanScore = 0;
+let computerScore = 0;
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
