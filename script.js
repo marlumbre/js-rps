@@ -1,4 +1,6 @@
 function getHumanChoice() {
+    // same RNG from getComputerChoice() just to make testing easier
+    /*
     randomChoice = Math.random();
     console.log(randomChoice);
     if (randomChoice <= 0.3) {
@@ -10,7 +12,24 @@ function getHumanChoice() {
     else {
         return "scissors";
     }
-    // return(prompt("Rock, Paper, or Scissors?", "Your choice"));
+        */
+
+    // gets player choice
+    
+    while(true) {
+        playerChoice = prompt("Rock, Paper, or Scissors?");
+        playerChoice = playerChoice.toLowerCase();
+        switch (playerChoice) {
+            case "rock":
+                return "rock";
+            case "paper" :
+                return "paper";
+            case "scissors" :
+                return "scissors";
+            default:
+                console.log("Invalid play, try again");
+        }
+    }
 }
 
 function getComputerChoice() {
@@ -29,8 +48,8 @@ function getComputerChoice() {
 
 function playRound(humanChoice, computerChoice) {
     // round logic
-    console.log("The player played " + humanSelection + "!");
-    console.log("The computer played " + computerSelection + "!");
+    console.log("The player played " + humanChoice + "!");
+    console.log("The computer played " + computerChoice + "!");
 }
 
 const humanSelection = getHumanChoice();
