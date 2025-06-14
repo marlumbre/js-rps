@@ -13,21 +13,21 @@ function getComputerChoice() {
 }
 
 function updateGameLogs(result, humanChoice, computerChoice) {
-            const gameLogs = document.querySelector('div');
+            const scoreDisplay = document.querySelector('.scores');
+            const gameLogs = document.querySelector('.logs');
             const winLog = document.createElement('h3');
-            const scoreLog = document.createElement('h4');
             const choiceLog = document.createElement('p');
 
             const scores = `Player ${humanScore}:${computerScore} Computer`;
-            const choices = `Player chose ${humanChoice}, Computer chose ${computerChoice}`;
+            const choices = `Player chose ${humanChoice}, computer chose ${computerChoice}.`;
 
             winLog.textContent = result;
-            scoreLog.textContent = scores;
+            scoreDisplay.textContent = scores;
             choiceLog.textContent = choices;
 
-            gameLogs.insertBefore(winLog, gameLogs.firstChild);
-            gameLogs.insertBefore(scoreLog, gameLogs.firstChild);
+            gameLogs.prepend(document.createElement('hr'));
             gameLogs.insertBefore(choiceLog, gameLogs.firstChild);
+            gameLogs.insertBefore(winLog, gameLogs.firstChild);
         }
 
 function playRound(humanChoice) {
