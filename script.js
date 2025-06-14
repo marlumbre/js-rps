@@ -1,11 +1,5 @@
-let humanScore = 0;
-let computerScore = 0;
-// const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-// function getHumanChoice() {
+// function getHumanChoice(playerChoice) {
 //     while(true) {
-//         playerChoice = prompt("Rock, Paper, or Scissors?");
 //         playerChoice = playerChoice.toLowerCase();
 //         switch (playerChoice) {
 //             case "rock":
@@ -41,10 +35,8 @@ function playRound(humanChoice, computerChoice) {
     const playerWin = "The player wins.";
     const compWin = "The computer wins.";
 
-
-
     // Output plays
-    log.appendChild("Player: " + humanChoice);
+    console.log("Player: " + humanChoice);
     console.log("Computer: " + computerChoice);
     
     // Check for winner or draw
@@ -82,9 +74,22 @@ function playRound(humanChoice, computerChoice) {
     console.log("Player: " + humanScore + ", Computer: " + computerScore);
 }
 
-const logs = document.querySelector("div.logs");
-const rock = document.querySelector("button.rock");
-const paper = document.querySelector("button.paper");
-const scissors = document.querySelector("button.scissors");
+let humanScore = 0;
+let computerScore = 0;
 
-rock.addEventListener("click", playRound("rock", getComputerChoice()));
+const rockButton = document.querySelector('.rock');
+rockButton.addEventListener("click", () => {
+    playRound("rock", getComputerChoice());
+});
+
+const paperButton = document.querySelector('.paper');
+paperButton.addEventListener("click", () => {
+    playRound("paper", getComputerChoice());
+});
+
+const scissorsButton = document.querySelector('.scissors');
+scissorsButton.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice());
+});
+
+// playRound(humanSelection, computerSelection);
