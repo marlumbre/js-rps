@@ -1,19 +1,24 @@
-function getHumanChoice() {
-    while(true) {
-        playerChoice = prompt("Rock, Paper, or Scissors?");
-        playerChoice = playerChoice.toLowerCase();
-        switch (playerChoice) {
-            case "rock":
-                return "rock";
-            case "paper" :
-                return "paper";
-            case "scissors" :
-                return "scissors";
-            default:
-                alert("Invalid play, try again");
-        }
-    }
-}
+let humanScore = 0;
+let computerScore = 0;
+// const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+// function getHumanChoice() {
+//     while(true) {
+//         playerChoice = prompt("Rock, Paper, or Scissors?");
+//         playerChoice = playerChoice.toLowerCase();
+//         switch (playerChoice) {
+//             case "rock":
+//                 return "rock";
+//             case "paper" :
+//                 return "paper";
+//             case "scissors" :
+//                 return "scissors";
+//             default:
+//                 alert("Invalid play, try again");
+//         }
+//     }
+// }
 
 function getComputerChoice() {
     randomChoice = Math.random(); // generates random number for computer choice
@@ -36,8 +41,10 @@ function playRound(humanChoice, computerChoice) {
     const playerWin = "The player wins.";
     const compWin = "The computer wins.";
 
+
+
     // Output plays
-    console.log("Player: " + humanChoice);
+    log.appendChild("Player: " + humanChoice);
     console.log("Computer: " + computerChoice);
     
     // Check for winner or draw
@@ -75,13 +82,9 @@ function playRound(humanChoice, computerChoice) {
     console.log("Player: " + humanScore + ", Computer: " + computerScore);
 }
 
-let humanScore = 0;
-let computerScore = 0;
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+const logs = document.querySelector("div.logs");
+const rock = document.querySelector("button.rock");
+const paper = document.querySelector("button.paper");
+const scissors = document.querySelector("button.scissors");
 
-playRound(humanSelection, computerSelection);
-playRound(getHumanChoice(), getComputerChoice());
-playRound(getHumanChoice(), getComputerChoice());
-playRound(getHumanChoice(), getComputerChoice());
-playRound(getHumanChoice(), getComputerChoice());
+rock.addEventListener("click", playRound("rock", getComputerChoice()));
