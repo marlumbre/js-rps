@@ -1,19 +1,3 @@
-// function getHumanChoice(playerChoice) {
-//     while(true) {
-//         playerChoice = playerChoice.toLowerCase();
-//         switch (playerChoice) {
-//             case "rock":
-//                 return "rock";
-//             case "paper" :
-//                 return "paper";
-//             case "scissors" :
-//                 return "scissors";
-//             default:
-//                 alert("Invalid play, try again");
-//         }
-//     }
-// }
-
 function getComputerChoice() {
     randomChoice = Math.random(); // generates random number for computer choice
     // console.log(randomChoice);
@@ -28,68 +12,71 @@ function getComputerChoice() {
     }
 }
 
-function playRound(humanChoice, computerChoice) {
+function updateGameLogs(result, humanChoice, computerChoice) {
+            const gameLogs = document.querySelector('div');
+            const winLog = document.createElement('h3');
+            const scoreLog = document.createElement('h4');
+            const choiceLog = document.createElement('p');
 
-    choicesMade = humanChoice + computerChoice;
+            const scores = `Player ${humanScore}:${computerScore} Computer`;
+            const choices = `Player chose ${humanChoice}, Computer chose ${computerChoice}`;
 
-    const playerWin = "The player wins.";
-    const compWin = "The computer wins.";
+            winLog.textContent = result;
+            scoreLog.textContent = scores;
+            choiceLog.textContent = choices;
 
-    // Output plays
-    console.log("Player: " + humanChoice);
-    console.log("Computer: " + computerChoice);
+            gameLogs.insertBefore(winLog, gameLogs.firstChild);
+            gameLogs.insertBefore(scoreLog, gameLogs.firstChild);
+            gameLogs.insertBefore(choiceLog, gameLogs.firstChild);
+        }
+
+function playRound(humanChoice) {
+    const computerChoice = getComputerChoice();
+    const choicesMade = humanChoice + computerChoice;
+
+    let result = "";
     
     // Check for winner or draw
     switch (choicesMade) {
         case ("rockscissors") :
-            humanScore++;
-            console.log(playerWin);
-            break;
-        case ("rockpaper") :
-            computerScore++;
-            console.log(compWin);
-            break;
         case ("paperrock") :
-            humanScore++;
-            console.log(playerWin);
-            break;
-        case ("paperscissors") :
-            computerScore++;
-            console.log(compWin);
-            break;
         case ("scissorspaper") :
             humanScore++;
-            console.log(playerWin);
+            result = "Player wins!";
             break;
+        case ("rockpaper") :
+        case ("paperscissors") :
         case ("scissorsrock") :
             computerScore++;
-            console.log(compWin);
+            result = "Computer wins!";
             break;
         default :
-            console.log("It's a draw!");
+            result = "It's a draw!";
             break;
     }
 
-    // Output scores
-    console.log("Player: " + humanScore + ", Computer: " + computerScore);
+    updateGameLogs(result, humanChoice, computerChoice);
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
-const rockButton = document.querySelector('.rock');
-rockButton.addEventListener("click", () => {
+const rockBtn = document.querySelector('button.rock');
+rockBtn.addEventListener("click", () => {
     playRound("rock", getComputerChoice());
 });
 
-const paperButton = document.querySelector('.paper');
-paperButton.addEventListener("click", () => {
+const paperBtn = document.querySelector('button.paper');
+paperBtn.addEventListener("click", () => {
     playRound("paper", getComputerChoice());
+
 });
 
-const scissorsButton = document.querySelector('.scissors');
-scissorsButton.addEventListener("click", () => {
+const scissorsBtn = document.querySelector('button.scissors');
+scissorsBtn.addEventListener("click", () => {
     playRound("scissors", getComputerChoice());
 });
 
 // playRound(humanSelection, computerSelection);
+
+
