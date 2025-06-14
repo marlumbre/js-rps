@@ -25,9 +25,9 @@ function updateGameLogs(result, humanChoice, computerChoice) {
             scoreDisplay.textContent = scores;
             choiceLog.textContent = choices;
 
+            gameLogs.prepend(winLog);
+            gameLogs.prepend(choiceLog);
             gameLogs.prepend(document.createElement('hr'));
-            gameLogs.insertBefore(choiceLog, gameLogs.firstChild);
-            gameLogs.insertBefore(winLog, gameLogs.firstChild);
         }
 
 function playRound(humanChoice) {
@@ -56,6 +56,22 @@ function playRound(humanChoice) {
     }
 
     updateGameLogs(result, humanChoice, computerChoice);
+
+    if (humanScore >= 5) {
+        updateGameLogs("Game Over! The player wins.", humanChoice, computerChoice);
+        alert("Player wins!");
+        disableButtons();
+    } else if (computerScore >= 5) {
+        updateGameLogs("Game Over! The computer wins.", humanChoice, computerChoice);
+        alert("Player wins!");
+        disableButtons();
+    }
+}
+
+function disableButtons() {
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
 }
 
 let humanScore = 0;
