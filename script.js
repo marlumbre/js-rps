@@ -63,7 +63,7 @@ function playRound(humanChoice) {
         disableButtons();
     } else if (computerScore >= 5) {
         updateGameLogs("Game Over! The computer wins.", humanChoice, computerChoice);
-        alert("Player wins!");
+        alert("Computer wins!");
         disableButtons();
     }
 }
